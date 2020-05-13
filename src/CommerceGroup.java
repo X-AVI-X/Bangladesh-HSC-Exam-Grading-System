@@ -1,8 +1,8 @@
 public class CommerceGroup extends Group implements Result{
-    private double accounting;
-    private double finance;
-    private double marketing;
-    private double management;
+    private double accounting=-1;
+    private double finance=-1;
+    private double marketing=-1;
+    private double management=-1;
 
     public CommerceGroup(double bangla, double english, double ict, double accounting, double finance, double marketing, double management) {
         super(bangla, english, ict);

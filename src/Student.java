@@ -16,17 +16,23 @@ public class Student {
         this.address=address;
         this.institute=institute;
     }
-    public void setStudentDetails(){
+    public Student(){
+
+    }
+    public void setStudentDetails() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter student name: ");
-        this.name= scan.nextLine();
-        System.out.println("Enter subject group: ");
-        this.group= scan.nextLine();
-        System.out.println("Enter roll: ");
+        System.out.print("Enter student name: ");
+        this.name = scan.nextLine();
+        System.out.print("Enter subject group (Write 'Science'/'Commerce'/'Arts'): ");
+        this.group = scan.nextLine();
+        System.out.print("Enter roll: ");
         this.roll= scan.nextInt();
-        System.out.println("Enter father's name: ");
+        scan.nextLine();
+        System.out.print("Enter institute's name: ");
+        this.institute=scan.nextLine();
+        System.out.print("Enter father's name: ");
         this.fatherName= scan.nextLine();
-        System.out.println("Enter address: ");
+        System.out.print("Enter address: ");
         this.address= scan.nextLine();
     }
 

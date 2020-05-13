@@ -1,7 +1,7 @@
 import java.io.*;
 public class WriteStuInfo {
 
-    public void writer(int roll,String personal, String result) {
+    public void writer(int roll, String personal, String result) {
         String fileName = roll+".txt";
     File file = new File(fileName);
     try {
@@ -11,7 +11,6 @@ public class WriteStuInfo {
         fWrite.close();
     }catch (Exception e){
         System.out.println("Error writing file.");
-        e.printStackTrace();
     }
 }
 }

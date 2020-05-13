@@ -15,8 +15,13 @@ public class ReadStuInfo{
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Error occurred while reading file.");
-            e.printStackTrace();
+            System.out.println("Error occurred while reading file/Your file doesn't exists.");
+            System.out.println("Create new student result file to generate result and to see it later using roll.");
+        }
+        finally {
+            System.out.println();
+            System.out.println("Exiting file reading module...");
+            System.out.println("Going back to main menu...");
         }
     }
 }

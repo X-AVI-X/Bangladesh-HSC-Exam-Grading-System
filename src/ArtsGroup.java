@@ -1,8 +1,8 @@
 public class ArtsGroup extends Group implements Result{
-    private double sociology;
-    private double civics;
-    private double economics;
-    private double logic;
+    private double sociology=-1;
+    private double civics=-1;
+    private double economics=-1;
+    private double logic=-1;
 
     public ArtsGroup(double bangla, double english, double ict, double sociology,double civics,double economics,double logic){
         super(bangla, english, ict);
@@ -15,7 +15,7 @@ public class ArtsGroup extends Group implements Result{
         super();
     }
 
-    public void setScienceMarks () {
+    public void setArtsMarks () {
         setCommonSubMarks();
         while (sociology == -1)
             sociology = doublePaperAvg("Sociology");
