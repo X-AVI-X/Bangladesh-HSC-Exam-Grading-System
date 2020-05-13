@@ -1,10 +1,19 @@
 import java.util.Scanner;
 
-public class Group extends Student{
+public class Group{
     protected double bangla=-1;
     protected double english=-1;
     protected double ict=-1;
     public static double gpaTotal=0;
+
+    public Group(double bangla, double english, double ict) {
+        this.bangla=bangla;
+        this.english=english;
+        this.ict=ict;
+    }
+
+    public Group() {
+    }
 
     public void setCommonSubMarks (){
         Scanner scan = new Scanner(System.in);
@@ -82,6 +91,10 @@ public class Group extends Student{
             return marks+"      0       F";
         }
         else return "Invalid";
+    }
+    public double gpaGenerator(){
+        double gpa=Math.round((gpaTotal/7)*100);
+        return gpa/100;
     }
 
 }

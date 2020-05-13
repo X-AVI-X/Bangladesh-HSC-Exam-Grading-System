@@ -1,3 +1,3 @@
 public interface Result {
-    public void getResult();
+    public String getResult();
 }

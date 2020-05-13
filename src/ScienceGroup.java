@@ -4,6 +4,17 @@ public class ScienceGroup extends Group implements Result{
     protected double math=-1;
     protected double biology=-1;
 
+    public ScienceGroup(double bangla, double english, double ict, double physics, double chemistry, double math, double biology){
+        super (bangla, english, ict);
+        this.physics=physics;
+        this.chemistry=chemistry;
+        this.math=math;
+        this.biology=biology;
+    }
+    public ScienceGroup(){
+        super();
+    }
+
     public void setScienceMarks (){
         setCommonSubMarks ();
         while (physics==-1)
@@ -15,25 +26,24 @@ public class ScienceGroup extends Group implements Result{
         while (biology==-1)
         biology = doublePaperAvg("Biology");
     }
-    public void getResult(){
-        gpaTotal=0;
-        System.out.println();
-        System.out.println("Subject    "+"     "+"Marks"+"    "+"Grade"+"   "+"Letter Grade");
-        System.out.println("_____________________________________________");
-        System.out.println("BANGLA     "+"     "+gradeGenerator(bangla));
-        System.out.println("ENGLISH    "+"     "+gradeGenerator(english));
-        System.out.println("ICT        "+"     "+gradeGenerator(ict));
-        System.out.println("PHYSICS    "+"     "+gradeGenerator(physics));
-        System.out.println("CHEMISTRY  "+"     "+gradeGenerator(chemistry));
-        System.out.println("MATH       "+"     "+gradeGenerator(math));
-        System.out.println("BIOLOGY    "+"     "+gradeGenerator(biology));
-        System.out.println("_____________________________________________");
+    public String getResult() {
+        gpaTotal = 0;
         double totalMarks = (bangla + english + physics + chemistry + math + biology) * 2 + ict;
-        double percentage = Math.round(totalMarks / 13)*100;
-        System.out.println("Total marks"+"     "+ totalMarks +"    "+"Percentage"+"   "+ percentage/100 +"%"+"           [Total marks with both papers]");
-        double gpaAvg= Math.round((gpaTotal/7)*100);
-        System.out.println("GPA        "+"     "+gpaAvg/100);
-        gpaTotal=0;
+        double percentage = Math.round(totalMarks / 13) * 100;
+
+        return "\n"+
+        "Subject    " + "     " + "              Marks" + "    " + "Grade" + "   " + "Letter Grade\n"+
+        "_________________________________________________________________________"+"\n"+
+        "BANGLA      [COMBINED]   " + "     " + gradeGenerator(bangla)+"\n"+
+        "ENGLISH     [COMBINED]   " + "     " + gradeGenerator(english)+"\n"+
+        "ICT                      " + "     " + gradeGenerator(ict)+"\n"+
+        "PHYSICS     [COMBINED]   " + "     " + gradeGenerator(physics)+"\n"+
+        "CHEMISTRY   [COMBINED]   " + "     " + gradeGenerator(chemistry)+"\n"+
+        "MATH        [COMBINED]   " + "     " + gradeGenerator(math)+"\n"+
+        "BIOLOGY     [COMBINED]   " + "     " + gradeGenerator(biology)+"\n"+
+        "_________________________________________________________________________"+"\n"+
+        "Total marks" + "                 " + totalMarks + "    " + "Percentage" + "   " + percentage / 100 + "%" + "                    [Total marks with both papers]"+"\n"+
+        "GPA             " + "              " + gpaGenerator() + "                                          [Without 4th subject]";
     }
 
 }

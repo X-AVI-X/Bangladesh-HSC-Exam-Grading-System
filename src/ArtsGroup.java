@@ -4,6 +4,17 @@ public class ArtsGroup extends Group implements Result{
     private double economics;
     private double logic;
 
+    public ArtsGroup(double bangla, double english, double ict, double sociology,double civics,double economics,double logic){
+        super(bangla, english, ict);
+        this.sociology=sociology;
+        this.civics=civics;
+        this.economics=economics;
+        this.logic=logic;
+    }
+    public ArtsGroup(){
+        super();
+    }
+
     public void setScienceMarks () {
         setCommonSubMarks();
         while (sociology == -1)
@@ -15,25 +26,23 @@ public class ArtsGroup extends Group implements Result{
         while (logic == -1)
             logic = doublePaperAvg("Logic");
     }
-    public void getResult(){
+    public String getResult(){
         gpaTotal=0;
-        System.out.println();
-        System.out.println("Subject    "+"     "+"Marks"+"    "+"Grade"+"   "+"Letter Grade");
-        System.out.println("_____________________________________________");
-        System.out.println("BANGLA     "+"     "+gradeGenerator(bangla));
-        System.out.println("ENGLISH    "+"     "+gradeGenerator(english));
-        System.out.println("ICT        "+"     "+gradeGenerator(ict));
-        System.out.println("SOCIOLOGY  "+"     "+gradeGenerator(sociology));
-        System.out.println("CIVICS     "+"     "+gradeGenerator(civics));
-        System.out.println("ECONOMICS  "+"     "+gradeGenerator(economics));
-        System.out.println("LOGIC      "+"     "+gradeGenerator(logic));
-        System.out.println("_____________________________________________");
         double totalMarks = (bangla + english + sociology + civics + economics + logic) * 2 + ict;
         double percentage = Math.round(totalMarks / 13)*100;
-        System.out.println("Total marks"+"     "+ totalMarks +"    "+"Percentage"+"   "+ percentage/100 +"%"+"           [Total marks with both papers]");
-        double gpaAvg= Math.round((gpaTotal/7)*100);
-        System.out.println("GPA        "+"     "+gpaAvg/100);
-        gpaTotal=0;
+        return "\n"+
+                "Subject    " + "     " + "              Marks" + "    " + "Grade" + "   " + "Letter Grade\n"+
+                "_________________________________________________________________________"+"\n"+
+                "BANGLA      [COMBINED]   " + "     " + gradeGenerator(bangla)+"\n"+
+                "ENGLISH     [COMBINED]   " + "     " + gradeGenerator(english)+"\n"+
+                "ICT                      " + "     " + gradeGenerator(ict)+"\n"+
+                "SOCIOLOGY   [COMBINED]   " + "     " + gradeGenerator(sociology)+"\n"+
+                "CIVICS      [COMBINED]   " + "     " + gradeGenerator(civics)+"\n"+
+                "ECONOMICS   [COMBINED]   " + "     " + gradeGenerator(economics)+"\n"+
+                "LOGIC       [COMBINED]   " + "     " + gradeGenerator(logic)+"\n"+
+                "_________________________________________________________________________"+"\n"+
+                "Total marks" + "                 " + totalMarks + "    " + "Percentage" + "   " + percentage / 100 + "%" + "                    [Total marks with both papers]"+"\n"+
+                "GPA             " + "              " + gpaGenerator() + "                                          [Without 4th subject]";
     }
 
 }

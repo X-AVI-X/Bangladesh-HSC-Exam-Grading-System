@@ -4,6 +4,17 @@ public class CommerceGroup extends Group implements Result{
     private double marketing;
     private double management;
 
+    public CommerceGroup(double bangla, double english, double ict, double accounting, double finance, double marketing, double management) {
+        super(bangla, english, ict);
+        this.accounting=accounting;
+        this.finance=finance;
+        this.marketing=marketing;
+        this.management=management;
+    }
+    public CommerceGroup(){
+        super();
+    }
+
     public void setCommerceMarks () {
         setCommonSubMarks();
         while (accounting == -1)
@@ -15,25 +26,24 @@ public class CommerceGroup extends Group implements Result{
         while (management == -1)
             management = doublePaperAvg("Management");
     }
-    public void getResult(){
+    public String getResult(){
         gpaTotal=0;
-        System.out.println();
-        System.out.println("Subject    "+"     "+"Marks"+"    "+"Grade"+"   "+"Letter Grade");
-        System.out.println("_____________________________________________");
-        System.out.println("BANGLA     "+"     "+gradeGenerator(bangla));
-        System.out.println("ENGLISH    "+"     "+gradeGenerator(english));
-        System.out.println("ICT        "+"     "+gradeGenerator(ict));
-        System.out.println("ACCOUNTING "+"     "+gradeGenerator(accounting));
-        System.out.println("MARKETING  "+"     "+gradeGenerator(marketing));
-        System.out.println("FINANCE    "+"     "+gradeGenerator(finance));
-        System.out.println("MANAGEMENT "+"     "+gradeGenerator(management));
-        System.out.println("_____________________________________________");
-        double totalMarks = (bangla + english + accounting + marketing + finance + management) * 2 + ict;
+        double totalMarks = (bangla + english + accounting + finance + marketing + management) * 2 + ict;
         double percentage = Math.round(totalMarks / 13)*100;
-        System.out.println("Total marks"+"     "+ totalMarks +"    "+"Percentage"+"   "+ percentage/100 +"%"+"           [Total marks with both papers]");
-        double gpaAvg= Math.round((gpaTotal/7)*100);
-        System.out.println("GPA        "+"     "+gpaAvg/100);
-        gpaTotal=0;
+
+        return "\n"+
+                "Subject    " + "     " + "              Marks" + "    " + "Grade" + "   " + "Letter Grade\n"+
+                "_________________________________________________________________________"+"\n"+
+                "BANGLA      [COMBINED]   " + "     " + gradeGenerator(bangla)+"\n"+
+                "ENGLISH     [COMBINED]   " + "     " + gradeGenerator(english)+"\n"+
+                "ICT                      " + "     " + gradeGenerator(ict)+"\n"+
+                "ACCOUNTING  [COMBINED]   " + "     " + gradeGenerator(accounting)+"\n"+
+                "FINANCE     [COMBINED]   " + "     " + gradeGenerator(finance)+"\n"+
+                "MARKETING   [COMBINED]   " + "     " + gradeGenerator(marketing)+"\n"+
+                "MANAGEMENT  [COMBINED]   " + "     " + gradeGenerator(management)+"\n"+
+                "_________________________________________________________________________"+"\n"+
+                "Total marks" + "                 " + totalMarks + "    " + "Percentage" + "   " + percentage / 100 + "%" + "                    [Total marks with both papers]"+"\n"+
+                "GPA             " + "              " + gpaGenerator() + "                                          [Without 4th subject]";
     }
 
 }
